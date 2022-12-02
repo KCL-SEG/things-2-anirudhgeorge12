@@ -3,6 +3,7 @@ from django import forms
 # Create your forms here.
 
 class ThingForm(forms.Form):
-    name = forms.CharField(label = "name")
-    description = forms.CharField(label = "description", widget = forms.Textarea())
-    quantity = forms.IntegerField(label = "quantity", widget = forms.NumberInput())
+    class Meta:
+        model = Thing
+        fields = ['name', 'description', 'quantity']
+        widgets = { 'description': forms.Textarea(), 'quantity': forms.NumberInput() }
